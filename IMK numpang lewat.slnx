@@ -43,12 +43,12 @@
   <Project Path="Unity.XR.Interaction.Toolkit.Analytics.Hooks.Editor.csproj" />
   <Project Path="Unity.XR.Management.csproj" />
   <Project Path="Unity.Mathematics.Editor.csproj" />
+  <Project Path="Assembly-CSharp.csproj" />
   <Project Path="Unity.VisualScripting.SettingsProvider.Editor.csproj" />
   <Project Path="Unity.InputSystem.TestFramework.csproj" />
   <Project Path="UnityEditor.XR.LegacyInputHelpers.csproj" />
   <Project Path="Unity.VisualScripting.Shared.Editor.csproj" />
   <Project Path="Unity.XR.Interaction.Toolkit.Samples.InteractionSimulator.csproj" />
-  <Project Path="Assembly-CSharp.csproj" />
   <Project Path="FastScriptReload.Runtime.csproj" />
   <Project Path="Unity.XR.OpenXR.Features.MetaQuestSupport.csproj" />
   <Project Path="Unity.XR.Interaction.Toolkit.Samples.InteractionSimulator.Editor.csproj" />
