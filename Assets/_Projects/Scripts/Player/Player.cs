@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Singleton
+public class Player
 {
-    
+
 }
