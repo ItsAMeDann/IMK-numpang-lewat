@@ -1,42 +1,41 @@
-using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
-    [Header("Game Events")]
-    public UnityEvent winTriggered;
-    public UnityEvent loseTriggered;
+    public enum GameState { Playing, Win, Lose }
+    public static GameState CurrentState { get; private set; }
+
+    public GameObject winUI;
+    public GameObject loseUI;
+
+    private void OnEnable()
+    {
+        GameEvents.OnWin += Win;
+        GameEvents.OnLose += Lose;
+    }
+
+    private void OnDisable()
+    {
+        GameEvents.OnWin -= Win;
+        GameEvents.OnLose -= Lose;
+    }
 
     private void Start()
     {
-        // Connect signals ke fungsi yang sesuai
-        winTriggered.AddListener(hasWin);
-        loseTriggered.AddListener(hasLose);
+        CurrentState = GameState.Playing;
     }
 
-    // Dipanggil ketika pemain menang → pindah ke scene berikutnya
-    public void hasWin()
+    private void Win()
     {
-        Debug.Log("Player WIN! Pindah ke scene berikutnya...");
-        int nextScene = SceneManager.GetActiveScene().buildIndex + 1;
-
-        if (nextScene < SceneManager.sceneCountInBuildSettings)
-        {
-            SceneManager.LoadScene(nextScene);
-        }
-        else
-        {
-            // Kalau sudah scene terakhir, kembali ke scene 0 (menu utama)
-            SceneManager.LoadScene(0);
-        }
+        CurrentState = GameState.Win;
+        winUI.SetActive(true);
+        loseUI.SetActive(false);
     }
 
-    // Dipanggil ketika pemain kalah → reload scene yang sekarang
-    public void hasLose()
+    private void Lose()
     {
-        Debug.Log("Player LOSE! Reload scene...");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        CurrentState = GameState.Lose;
+        loseUI.SetActive(true);
+        winUI.SetActive(false);
     }
 }

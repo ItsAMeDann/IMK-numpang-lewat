@@ -5,22 +5,31 @@ public class CarScanner : MonoBehaviour
     public CarDecision decisionSystem;
     public LayerMask playerLayer;
     public LayerMask trafficLightLayer;
+    public LayerMask zebraCrossLayer;
 
     private bool playerInRange;
-    private bool playerOnRoad;
-    private bool isZebraCross;
+    private bool zebraCrossInRange;
+    private bool playerOnZebraCross;
     private bool isWalkerLightOn;
 
     private void OnTriggerStay(Collider other)
     {
+        Debug.Log($"Collider detected: {other.gameObject.name}, Layer: {LayerMask.LayerToName(other.gameObject.layer)}");
         if (((1 << other.gameObject.layer) & playerLayer) != 0)
         {
             playerInRange = true;
             if (other.TryGetComponent<PlayerStatus>(out var status))
             {
-                playerOnRoad = status.isOnRoad;
-                isZebraCross = status.isOnZebraCross;
+                playerOnZebraCross = status.isOnZebraCross;
+                // Debug.Log($"Player on zebra cross: {playerOnZebraCross}");
             }
+            // Debug.Log($"Player in range: {playerInRange}");
+        }
+
+        if (((1 << other.gameObject.layer) & zebraCrossLayer) != 0)
+        {
+            zebraCrossInRange = true;
+            // Debug.Log($"Zebra cross in range: {zebraCrossInRange}");
         }
 
         if (((1 << other.gameObject.layer) & trafficLightLayer) != 0)
@@ -28,12 +37,13 @@ public class CarScanner : MonoBehaviour
             if (other.TryGetComponent<TrafficLightSystem>(out var light))
             {
                 isWalkerLightOn = light.isGreenForPedestrian;
+                // Debug.Log($"Walker light green: {isWalkerLightOn}");
             }
         }
 
         if (decisionSystem != null)
         {
-            decisionSystem.UpdateScannerData(playerInRange, playerOnRoad, isZebraCross, isWalkerLightOn);
+            decisionSystem.UpdateScannerData(playerInRange, playerOnZebraCross, isWalkerLightOn, zebraCrossInRange);
         }
     }
 
@@ -42,18 +52,25 @@ public class CarScanner : MonoBehaviour
         if (((1 << other.gameObject.layer) & playerLayer) != 0)
         {
             playerInRange = false;
-            playerOnRoad = false;
-            isZebraCross = false;
+            playerOnZebraCross = false;
+            // Debug.Log($"Player in range: {playerInRange}, on zebra cross: {playerOnZebraCross}");
         }
-        
+
         if (((1 << other.gameObject.layer) & trafficLightLayer) != 0)
         {
             isWalkerLightOn = false;
+            // Debug.Log($"Walker light green: {isWalkerLightOn}");
+        }
+
+        if (((1 << other.gameObject.layer) & zebraCrossLayer) != 0)
+        {
+            zebraCrossInRange = false;
+            // Debug.Log($"Zebra cross in range: {zebraCrossInRange}");
         }
 
         if (decisionSystem != null)
         {
-            decisionSystem.UpdateScannerData(playerInRange, playerOnRoad, isZebraCross, isWalkerLightOn);
+            decisionSystem.UpdateScannerData(playerInRange, playerOnZebraCross, isWalkerLightOn, zebraCrossInRange);
         }
     }
 }
