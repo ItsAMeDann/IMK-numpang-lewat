@@ -6,11 +6,23 @@ public class CarScanner : MonoBehaviour
     public LayerMask playerLayer;
     public LayerMask trafficLightLayer;
     public LayerMask zebraCrossLayer;
+    public LayerMask carLayer;
 
     private bool playerInRange;
     private bool zebraCrossInRange;
     private bool playerOnZebraCross;
     private bool isWalkerLightOn;
+    private bool isCarAhead;
+    public CarMovementData movementData;
+
+    void Update()
+    {
+        isCarAhead = IsThereCarAhead();
+        if (decisionSystem != null)
+        {
+            decisionSystem.UpdateScannerData(playerInRange, playerOnZebraCross, isWalkerLightOn, zebraCrossInRange, isCarAhead);
+        }
+    }
 
     private void OnTriggerStay(Collider other)
     {
@@ -40,11 +52,6 @@ public class CarScanner : MonoBehaviour
                 // Debug.Log($"Walker light green: {isWalkerLightOn}");
             }
         }
-
-        if (decisionSystem != null)
-        {
-            decisionSystem.UpdateScannerData(playerInRange, playerOnZebraCross, isWalkerLightOn, zebraCrossInRange);
-        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -67,11 +74,23 @@ public class CarScanner : MonoBehaviour
             zebraCrossInRange = false;
             // Debug.Log($"Zebra cross in range: {zebraCrossInRange}");
         }
+    }
 
-        if (decisionSystem != null)
+    private bool IsThereCarAhead()
+    {
+        bool nabrak = Physics.Raycast(transform.position, transform.forward, movementData.detectionDistance, carLayer);
+        Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, movementData.detectionDistance, carLayer);
+        Debug.DrawRay(transform.position, transform.forward * movementData.detectionDistance, Color.red);
+
+        if (hit.collider != null && hit.transform != transform)
         {
-            decisionSystem.UpdateScannerData(playerInRange, playerOnZebraCross, isWalkerLightOn, zebraCrossInRange);
+            nabrak = true;
         }
+        else
+        {
+            nabrak = false;
+        }
+        return nabrak;
     }
 }
 

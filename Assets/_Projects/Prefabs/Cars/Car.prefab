@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5235999736227280940}
   - component: {fileID: 17870985324166843}
   - component: {fileID: 2029687592971809133}
+  - component: {fileID: 9001389364188967965}
   m_Layer: 9
   m_Name: Car
   m_TagString: Untagged
@@ -126,12 +127,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4492edb32f0814d499a838c8bef4c812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CarDecision
-  max_velocity: 10
-  acceleration_force: 5
-  braking_force: 8
+  movementData: {fileID: 11400000, guid: 7e01b6253e90d0c409476c7221875f73, type: 2}
+  carMove: {fileID: 9001389364188967965}
   slow_factor: 0.5
   hard_slow_factor: 0.2
   currentState: 0
+--- !u!114 &9001389364188967965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3742083508034754408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0122a39fe9fd5d342a031ce5d4650ebb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CarMove
+  data: {fileID: 11400000, guid: 7e01b6253e90d0c409476c7221875f73, type: 2}
 --- !u!1 &5418394444351689585
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,3 +221,7 @@ MonoBehaviour:
   zebraCrossLayer:
     serializedVersion: 2
     m_Bits: 256
+  carLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  movementData: {fileID: 11400000, guid: 7e01b6253e90d0c409476c7221875f73, type: 2}
