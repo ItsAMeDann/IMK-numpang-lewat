@@ -15,7 +15,7 @@ public class CarDecision : MonoBehaviour
     private float current_velocity;
     private float target_velocity;
 
-    private bool playerInRange, playerOnRoad, isZebraCross, isWalkerLightOn;
+    private bool playerInRange, playerOnZebraCross, isWalkerLightOn, zebraCrossInRange;
 
     void Update()
     {
@@ -25,21 +25,22 @@ public class CarDecision : MonoBehaviour
 
     private void DetermineStateAndTarget()
     {
-        if (isWalkerLightOn)
+        if (isWalkerLightOn || (playerInRange && playerOnZebraCross))
         {
             currentState = CarState.FullStop;
             target_velocity = 0;
         }
-        else if (playerInRange && playerOnRoad)
+        else if (zebraCrossInRange && playerInRange)
         {
             currentState = CarState.SlowDown;
-            target_velocity = isZebraCross ? max_velocity * hard_slow_factor : max_velocity * slow_factor;
+            target_velocity = playerOnZebraCross ? max_velocity * hard_slow_factor : max_velocity * slow_factor;
         }
         else
         {
             currentState = CarState.NormalDrive;
             target_velocity = max_velocity;
         }
+        Debug.Log($"State: {currentState}, Target Velocity: {target_velocity}");
     }
 
     private void ApplyMovement()
@@ -49,11 +50,11 @@ public class CarDecision : MonoBehaviour
         transform.Translate(Vector3.forward * current_velocity * Time.deltaTime);
     }
 
-    public void UpdateScannerData(bool inRange, bool onRoad, bool zebra, bool walkerLight)
+    public void UpdateScannerData(bool inRange, bool onZebraCross, bool walkerLight, bool zebraCrossRange)
     {
         playerInRange = inRange;
-        playerOnRoad = onRoad;
-        isZebraCross = zebra;
+        playerOnZebraCross = onZebraCross;
         isWalkerLightOn = walkerLight;
+        zebraCrossInRange = zebraCrossRange;
     }
 }
