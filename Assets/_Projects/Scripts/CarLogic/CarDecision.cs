@@ -12,7 +12,7 @@ public class CarDecision : MonoBehaviour
     public CarState currentState = CarState.NormalDrive;
     private float target_velocity;
 
-    private bool playerInRange, playerOnZebraCross, isWalkerLightOn, zebraCrossInRange, isCarAhead;
+    private bool playerInRange, playerGiveSignal, playerOnZebraCross, isWalkerLightOn, zebraCrossInRange, isCarAhead;
 
     void Update()
     {
@@ -26,7 +26,7 @@ public class CarDecision : MonoBehaviour
             currentState = CarState.FullStop;
             target_velocity = 0f;
         }
-        else if (isWalkerLightOn || (playerInRange && playerOnZebraCross))
+        else if (isWalkerLightOn || (playerInRange && playerOnZebraCross) || (playerInRange && playerGiveSignal))
         {
             currentState = CarState.FullStop;
             target_velocity = 0f;
@@ -48,9 +48,10 @@ public class CarDecision : MonoBehaviour
         carMove.SetTargetVelocity(target_velocity);
     }
 
-    public void UpdateScannerData(bool inRange, bool onZebraCross, bool walkerLight, bool zebraCrossRange, bool carAhead)
+    public void UpdateScannerData(bool inRange, bool giveSignal, bool onZebraCross, bool walkerLight, bool zebraCrossRange, bool carAhead)
     {
         playerInRange = inRange;
+        playerGiveSignal = giveSignal;
         playerOnZebraCross = onZebraCross;
         isWalkerLightOn = walkerLight;
         zebraCrossInRange = zebraCrossRange;
