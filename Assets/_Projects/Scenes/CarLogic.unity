@@ -333,6 +333,7 @@ MonoBehaviour:
   - {fileID: 765214429}
   - {fileID: 1603946849}
   - {fileID: 2083602932}
+  playerCamera: {fileID: 1591240269}
 --- !u!4 &344670016
 Transform:
   m_ObjectHideFlags: 0
@@ -593,9 +594,9 @@ GameObject:
   - component: {fileID: 499372024}
   - component: {fileID: 499372023}
   - component: {fileID: 499372022}
-  - component: {fileID: 499372027}
   - component: {fileID: 499372026}
   - component: {fileID: 499372028}
+  - component: {fileID: 499372027}
   m_Layer: 6
   m_Name: Player (VR)
   m_TagString: Untagged
@@ -2580,6 +2581,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Car
       objectReference: {fileID: 0}
+    - target: {fileID: 6009141043341876361, guid: 623ba94bc3ed9854ebb0d012fb73c53e, type: 3}
+      propertyPath: despawnTime
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6009141043341876361, guid: 623ba94bc3ed9854ebb0d012fb73c53e, type: 3}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 1591240269}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
