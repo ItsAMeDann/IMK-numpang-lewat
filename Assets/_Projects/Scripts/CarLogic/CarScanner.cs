@@ -6,21 +6,36 @@ public class CarScanner : MonoBehaviour
     public LayerMask playerLayer;
     public LayerMask trafficLightLayer;
     public LayerMask zebraCrossLayer;
+    public LayerMask carLayer;
 
     private bool playerInRange;
+    private bool playerGiveSignal;
     private bool zebraCrossInRange;
     private bool playerOnZebraCross;
     private bool isWalkerLightOn;
+    private bool isCarAhead;
+    public CarMovementData movementData;
+
+    void Update()
+    {
+        if (decisionSystem != null)
+        {
+            Debug.Log($"Scanner Data - PlayerInRange: {playerInRange}, PlayerGiveSignal: {playerGiveSignal}, PlayerOnZebraCross: {playerOnZebraCross}, WalkerLightGreen: {isWalkerLightOn}, ZebraCrossInRange: {zebraCrossInRange}, CarAhead: {isCarAhead}");
+            decisionSystem.UpdateScannerData(playerInRange, playerGiveSignal, playerOnZebraCross, isWalkerLightOn, zebraCrossInRange, isCarAhead);
+        }
+        isCarAhead = IsThereCarAhead();
+    }
 
     private void OnTriggerStay(Collider other)
     {
-        Debug.Log($"Collider detected: {other.gameObject.name}, Layer: {LayerMask.LayerToName(other.gameObject.layer)}");
+        // Debug.Log($"Collider detected: {other.gameObject.name}, Layer: {LayerMask.LayerToName(other.gameObject.layer)}");
         if (((1 << other.gameObject.layer) & playerLayer) != 0)
         {
             playerInRange = true;
             if (other.TryGetComponent<PlayerStatus>(out var status))
             {
                 playerOnZebraCross = status.isOnZebraCross;
+                playerGiveSignal = status.giveSignal;
                 // Debug.Log($"Player on zebra cross: {playerOnZebraCross}");
             }
             // Debug.Log($"Player in range: {playerInRange}");
@@ -41,10 +56,16 @@ public class CarScanner : MonoBehaviour
             }
         }
 
-        if (decisionSystem != null)
-        {
-            decisionSystem.UpdateScannerData(playerInRange, playerOnZebraCross, isWalkerLightOn, zebraCrossInRange);
-        }
+        // if (((1 << other.gameObject.layer) & carLayer) != 0)
+        // {
+        //     // Debug.Log($"Car detected ahead: {other.gameObject.name}");
+        //     // Check if it has the same rotation or not
+        //     if (Vector3.Dot(other.transform.forward, transform.forward) > 0.5f)
+        //     {
+        //         isCarAhead = true;
+        //         // Debug.Log($"Car ahead: {isCarAhead}");
+        //     }
+        // }
     }
 
     private void OnTriggerExit(Collider other)
@@ -53,6 +74,7 @@ public class CarScanner : MonoBehaviour
         {
             playerInRange = false;
             playerOnZebraCross = false;
+            playerGiveSignal = false;
             // Debug.Log($"Player in range: {playerInRange}, on zebra cross: {playerOnZebraCross}");
         }
 
@@ -68,10 +90,16 @@ public class CarScanner : MonoBehaviour
             // Debug.Log($"Zebra cross in range: {zebraCrossInRange}");
         }
 
-        if (decisionSystem != null)
-        {
-            decisionSystem.UpdateScannerData(playerInRange, playerOnZebraCross, isWalkerLightOn, zebraCrossInRange);
-        }
+        // if (((1 << other.gameObject.layer) & carLayer) != 0)
+        // {
+        //     isCarAhead = false;
+        //     // Debug.Log($"Car ahead: {isCarAhead}");
+        // }
+    }
+
+    private bool IsThereCarAhead()
+    {
+        return Physics.Raycast(transform.position, transform.forward, movementData.detectionDistance, carLayer);
     }
 }
 
