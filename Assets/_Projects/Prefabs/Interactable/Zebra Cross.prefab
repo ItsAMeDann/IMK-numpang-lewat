@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5477749408508380018, guid: c531470a8350de14c8fdcddea76191ee, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.03
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c531470a8350de14c8fdcddea76191ee, type: 3}
       propertyPath: m_Name
       value: Zebra Cross
