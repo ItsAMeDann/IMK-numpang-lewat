@@ -1,21 +1,28 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
+using System.Collections;
 
 public class TrafficLightSystem : MonoBehaviour
 {
     public bool isGreenForPedestrian;
-    void Update()
+
+    private Coroutine trafficLightCoroutine;
+    public void activateTrafficLightSystem()
     {
-        if (Keyboard.current.spaceKey.wasPressedThisFrame)
+        isGreenForPedestrian = true;
+        if (trafficLightCoroutine != null)
         {
-            isGreenForPedestrian = !isGreenForPedestrian;
-            Debug.Log($"Traffic light changed. Green for pedestrian: {isGreenForPedestrian}");
-            testWin();
+            StopCoroutine(trafficLightCoroutine);
         }
+        trafficLightCoroutine = StartCoroutine(trafficLightTimer());
     }
-    private void testWin()
+
+    private IEnumerator trafficLightTimer()
     {
-        Debug.Log("Player WIN! Pindah ke scene berikutnya...");
-        GameEvents.OnLose?.Invoke();
+        yield return new WaitForSeconds(5f); // Wait for 5 seconds
+        isGreenForPedestrian = false; // Set to red for pedestrians
+        trafficLightCoroutine = null; // Clear the coroutine reference
+        Debug.Log("Traffic light turned red for pedestrians.");
     }
+
+    // GameEvents.OnLose?.Invoke();
 }

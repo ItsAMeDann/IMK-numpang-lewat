@@ -20,7 +20,7 @@ public class CarScanner : MonoBehaviour
     {
         if (decisionSystem != null)
         {
-            Debug.Log($"Scanner Data - PlayerInRange: {playerInRange}, PlayerGiveSignal: {playerGiveSignal}, PlayerOnZebraCross: {playerOnZebraCross}, WalkerLightGreen: {isWalkerLightOn}, ZebraCrossInRange: {zebraCrossInRange}, CarAhead: {isCarAhead}");
+            // Debug.Log($"Scanner Data - PlayerInRange: {playerInRange}, PlayerGiveSignal: {playerGiveSignal}, PlayerOnZebraCross: {playerOnZebraCross}, WalkerLightGreen: {isWalkerLightOn}, ZebraCrossInRange: {zebraCrossInRange}, CarAhead: {isCarAhead}");
             decisionSystem.UpdateScannerData(playerInRange, playerGiveSignal, playerOnZebraCross, isWalkerLightOn, zebraCrossInRange, isCarAhead);
         }
         isCarAhead = IsThereCarAhead();

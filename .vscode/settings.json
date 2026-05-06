@@ -67,5 +67,5 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "IMK-numpang-lewat.slnx"
+    "dotnet.defaultSolution": "IMK numpang lewat.slnx"
 }
