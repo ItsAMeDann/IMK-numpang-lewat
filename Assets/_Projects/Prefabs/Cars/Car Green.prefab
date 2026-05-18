@@ -182,6 +182,14 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8438057710120695109, guid: 623ba94bc3ed9854ebb0d012fb73c53e, type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438057710120695109, guid: 623ba94bc3ed9854ebb0d012fb73c53e, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9001389364188967965, guid: 623ba94bc3ed9854ebb0d012fb73c53e, type: 3}
       propertyPath: data
       value: 
