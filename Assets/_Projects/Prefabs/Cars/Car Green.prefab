@@ -99,9 +99,17 @@ PrefabInstance:
       value: 0.07
       objectReference: {fileID: 0}
     - target: {fileID: 2029687592971809133, guid: 623ba94bc3ed9854ebb0d012fb73c53e, type: 3}
+      propertyPath: slow_factor
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2029687592971809133, guid: 623ba94bc3ed9854ebb0d012fb73c53e, type: 3}
       propertyPath: movementData
       value: 
       objectReference: {fileID: 11400000, guid: 6a08c4c5aa2040f4fa243ea56bc3e573, type: 2}
+    - target: {fileID: 2029687592971809133, guid: 623ba94bc3ed9854ebb0d012fb73c53e, type: 3}
+      propertyPath: hard_slow_factor
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3269589713720303072, guid: 623ba94bc3ed9854ebb0d012fb73c53e, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -180,6 +188,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5235999736227280940, guid: 623ba94bc3ed9854ebb0d012fb73c53e, type: 3}
       propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438057710120695109, guid: 623ba94bc3ed9854ebb0d012fb73c53e, type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438057710120695109, guid: 623ba94bc3ed9854ebb0d012fb73c53e, type: 3}
+      propertyPath: m_IsKinematic
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9001389364188967965, guid: 623ba94bc3ed9854ebb0d012fb73c53e, type: 3}
