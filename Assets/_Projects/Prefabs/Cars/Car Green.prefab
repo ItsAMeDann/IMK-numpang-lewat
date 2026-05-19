@@ -100,7 +100,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2029687592971809133, guid: 623ba94bc3ed9854ebb0d012fb73c53e, type: 3}
       propertyPath: slow_factor
-      value: 0
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 2029687592971809133, guid: 623ba94bc3ed9854ebb0d012fb73c53e, type: 3}
       propertyPath: movementData
@@ -108,7 +108,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 6a08c4c5aa2040f4fa243ea56bc3e573, type: 2}
     - target: {fileID: 2029687592971809133, guid: 623ba94bc3ed9854ebb0d012fb73c53e, type: 3}
       propertyPath: hard_slow_factor
-      value: 0
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 3269589713720303072, guid: 623ba94bc3ed9854ebb0d012fb73c53e, type: 3}
       propertyPath: m_LocalScale.x
