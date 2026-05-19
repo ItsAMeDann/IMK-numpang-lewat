@@ -94,7 +94,7 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/
 
 # VR / XR specific
-/[Aa]ssets/XR/
+# /[Aa]ssets/XR/
 
 # Addressables default ignores, before user customizations
 /ServerData
