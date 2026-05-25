@@ -6,6 +6,7 @@ public class CarSpawner : MonoBehaviour
 {
     public CarSpawnData spawnData;
     public Transform[] spawnPoints;
+    public Transform playerCamera;
 
     private List<GameObject> activeCars = new List<GameObject>();
 
@@ -52,6 +53,7 @@ public class CarSpawner : MonoBehaviour
 
         GameObject car = Instantiate(prefab, spawnPoint.position, spawnPoint.rotation);
         activeCars.Add(car);
+        car.GetComponent<CarDespawn>()?.setPlayerCamera(playerCamera);
         Debug.Log($"Spawned car: {car.name}. Transform: {car.transform}.");
 
         // Optional: auto-remove when destroyed
