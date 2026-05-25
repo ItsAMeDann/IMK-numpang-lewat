@@ -48,7 +48,7 @@ public class PlayerDecision : MonoBehaviour
 
         // If either hand is open (not gripping), set giveSignal to true
         // We use < 0.1f to allow for a tiny bit of resting pressure
-        if (leftGrip < 0.1f || rightGrip < 0.1f)
+        if (leftGrip > 0.9f || rightGrip > 0.9f)
         {
             return true;
         }
