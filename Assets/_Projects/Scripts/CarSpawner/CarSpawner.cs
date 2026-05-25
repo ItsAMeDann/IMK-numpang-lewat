@@ -12,6 +12,7 @@ public class CarSpawner : MonoBehaviour
 
     private void Start()
     {
+        SpawnCar();
         StartCoroutine(SpawnRoutine());
     }
 
