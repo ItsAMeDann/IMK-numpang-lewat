@@ -14,6 +14,7 @@ public class TrafficLightSystem : MonoBehaviour
             StopCoroutine(trafficLightCoroutine);
         }
         trafficLightCoroutine = StartCoroutine(trafficLightTimer());
+        Debug.Log("Traffic Light state changed: Now green");
     }
 
     private IEnumerator trafficLightTimer()
