@@ -96,11 +96,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 17870985324166843, guid: 623ba94bc3ed9854ebb0d012fb73c53e, type: 3}
       propertyPath: m_Size.y
-      value: 2
+      value: 2.3
       objectReference: {fileID: 0}
     - target: {fileID: 17870985324166843, guid: 623ba94bc3ed9854ebb0d012fb73c53e, type: 3}
       propertyPath: m_Size.z
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 17870985324166843, guid: 623ba94bc3ed9854ebb0d012fb73c53e, type: 3}
       propertyPath: m_Enabled
@@ -112,11 +112,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 17870985324166843, guid: 623ba94bc3ed9854ebb0d012fb73c53e, type: 3}
       propertyPath: m_Center.y
-      value: -2.13
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 17870985324166843, guid: 623ba94bc3ed9854ebb0d012fb73c53e, type: 3}
       propertyPath: m_Center.z
-      value: -2.2
+      value: -1.7
       objectReference: {fileID: 0}
     - target: {fileID: 2029687592971809133, guid: 623ba94bc3ed9854ebb0d012fb73c53e, type: 3}
       propertyPath: slow_factor
