@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject winUI;
     public GameObject loseUI;
+    public CarSpawner carSpawner;
 
     private void OnEnable()
     {
@@ -28,14 +29,49 @@ public class GameManager : MonoBehaviour
     private void Win()
     {
         CurrentState = GameState.Win;
+        if (winUI == null){
+            Debug.Log("Activating win end UI.");
+            return;
+        }
         winUI.SetActive(true);
         loseUI.SetActive(false);
+        carSpawner.StopSpawning();
     }
 
     private void Lose()
     {
         CurrentState = GameState.Lose;
+        if (loseUI == null){
+            Debug.Log("Activating lose end UI.");
+            return;
+        }
         loseUI.SetActive(true);
         winUI.SetActive(false);
+        carSpawner.StopSpawning();
+    }
+
+    public void RestartGame()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+    }
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+    public void ReturnToMainMenu()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+    }
+    public void LoadNextLevel()
+    {
+        int nextSceneIndex = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex + 1;
+        if (nextSceneIndex < UnityEngine.SceneManagement.SceneManager.sceneCountInBuildSettings)
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(nextSceneIndex);
+        }
+        else
+        {
+            Debug.Log("No more levels to load.");
+        }
     }
 }

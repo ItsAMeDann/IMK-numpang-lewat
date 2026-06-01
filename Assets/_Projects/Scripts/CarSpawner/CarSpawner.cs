@@ -16,6 +16,11 @@ public class CarSpawner : MonoBehaviour
         StartCoroutine(SpawnRoutine());
     }
 
+    public void StopSpawning()
+    {
+        StopAllCoroutines();
+    }
+
     private IEnumerator SpawnRoutine()
     {
         while (true)
