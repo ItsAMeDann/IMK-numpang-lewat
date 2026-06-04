@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public GameObject winUI;
     public GameObject loseUI;
     public CarSpawner carSpawner;
+    public UISpawner uISpawner;
 
     private void OnEnable()
     {
@@ -29,25 +30,29 @@ public class GameManager : MonoBehaviour
     private void Win()
     {
         CurrentState = GameState.Win;
-        if (winUI == null){
+        if (winUI == null)
+        {
             Debug.Log("Activating win end UI.");
             return;
         }
         winUI.SetActive(true);
         loseUI.SetActive(false);
         carSpawner.StopSpawning();
+        uISpawner.BringUIToCamera(winUI);
     }
 
     private void Lose()
     {
         CurrentState = GameState.Lose;
-        if (loseUI == null){
+        if (loseUI == null)
+        {
             Debug.Log("Activating lose end UI.");
             return;
         }
         loseUI.SetActive(true);
         winUI.SetActive(false);
         carSpawner.StopSpawning();
+        uISpawner.BringUIToCamera(loseUI);
     }
 
     public void RestartGame()
