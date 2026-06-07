@@ -99,6 +99,10 @@ PrefabInstance:
       value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 2029687592971809133, guid: 623ba94bc3ed9854ebb0d012fb73c53e, type: 3}
+      propertyPath: klaksonName
+      value: Klakson_long
+      objectReference: {fileID: 0}
+    - target: {fileID: 2029687592971809133, guid: 623ba94bc3ed9854ebb0d012fb73c53e, type: 3}
       propertyPath: slow_factor
       value: 0.8
       objectReference: {fileID: 0}
@@ -106,6 +110,10 @@ PrefabInstance:
       propertyPath: movementData
       value: 
       objectReference: {fileID: 11400000, guid: f8616dd3e30cc25489a2c684dc845204, type: 2}
+    - target: {fileID: 2029687592971809133, guid: 623ba94bc3ed9854ebb0d012fb73c53e, type: 3}
+      propertyPath: klaksonCooldown
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 2029687592971809133, guid: 623ba94bc3ed9854ebb0d012fb73c53e, type: 3}
       propertyPath: hard_slow_factor
       value: 0.7

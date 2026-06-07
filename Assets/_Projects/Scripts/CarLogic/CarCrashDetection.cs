@@ -9,6 +9,7 @@ public class CarCrashDetection : MonoBehaviour
         if (((1 << collision.gameObject.layer) & playerLayer) != 0)
         {
             Debug.Log("Player hit by car, triggering lose event.");
+            AudioManager.Instance.Play("Car_tabrak", transform);
             GameEvents.TriggerLose();
         }
     }

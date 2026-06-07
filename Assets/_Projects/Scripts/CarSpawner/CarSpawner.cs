@@ -7,6 +7,8 @@ public class CarSpawner : MonoBehaviour
     public CarSpawnData spawnData;
     public Transform[] spawnPoints;
     public Transform playerCamera;
+    [SerializeField] private float spawnCheckRadius = 6f;
+    [SerializeField] private LayerMask carLayer;
 
     private List<GameObject> activeCars = new List<GameObject>();
 
@@ -21,6 +23,27 @@ public class CarSpawner : MonoBehaviour
         StopAllCoroutines();
     }
 
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+
+        foreach (var point in spawnPoints)
+        {
+            if (point != null)
+                Gizmos.DrawWireSphere(point.position, spawnCheckRadius);
+        }
+    }
+
+    private bool CanSpawnAt(Transform spawnPoint)
+    {
+        Collider[] hits = Physics.OverlapSphere(
+            spawnPoint.position,
+            spawnCheckRadius,
+            carLayer
+        );
+
+        return hits.Length == 0;
+    }
     private IEnumerator SpawnRoutine()
     {
         while (true)
@@ -56,6 +79,12 @@ public class CarSpawner : MonoBehaviour
     {
         Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
         GameObject prefab = spawnData.carPrefabs[Random.Range(0, spawnData.carPrefabs.Length)];
+
+        if (!CanSpawnAt(spawnPoint))
+        {
+            Debug.Log($"Spawn point {spawnPoint.name} is occupied. Skipping spawn.");
+            return;
+        }
 
         GameObject car = Instantiate(prefab, spawnPoint.position, spawnPoint.rotation);
         activeCars.Add(car);

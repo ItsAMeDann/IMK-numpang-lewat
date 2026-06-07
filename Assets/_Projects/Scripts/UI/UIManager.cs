@@ -4,6 +4,9 @@ using UnityEngine.SceneManagement; // Wajib ditambahkan untuk pindah scene
 
 public class UIManager : MonoBehaviour
 {
+    [Header("Panels")]
+    public GameObject creditsPanel;
+    public GameObject settingsPanel;
     [Header("UI Buttons")]
     public Button button1;
     public Button button2;
@@ -21,6 +24,8 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        deactivateCreditsPanel();
+        deactivateSettingsPanel();
         DefaultLevelSetup();
         UpdateLevelStates();
     }
@@ -58,6 +63,7 @@ public class UIManager : MonoBehaviour
         {
             lock4.SetActive(false);
             button4.interactable = true;
+            activateCreditsPanel();
         }
         Debug.Log("Level states updated based on DataManager.");
         Debug.Log("Level 1 unlocked: " + DataManager.Instance.IsLevelUnlocked(0));
@@ -66,20 +72,48 @@ public class UIManager : MonoBehaviour
         Debug.Log("Level 4 unlocked: " + DataManager.Instance.IsLevelUnlocked(3));
     }
 
+    public void activateCreditsPanel()
+    {
+        creditsPanel.SetActive(true);
+        AudioManager.Instance.Play("Interaction_positive", transform);
+    }
+
+    public void activateSettingsPanel()
+    {
+        settingsPanel.SetActive(true);
+        AudioManager.Instance.Play("Interaction_positive", transform);
+    }
+
+    public void deactivateSettingsPanel()
+    {
+        settingsPanel.SetActive(false);
+        AudioManager.Instance.Play("Interaction_negative", transform);
+    }
+
+    public void deactivateCreditsPanel()
+    {
+        creditsPanel.SetActive(false);
+        AudioManager.Instance.Play("Interaction_negative", transform);
+    }
+
     public void ChangeSelectedLevel(int level)
     {
         selectedLevel = level;
+        AudioManager.Instance.Play("Interaction_cekrek", transform);
+        Debug.Log("Selected level changed to: " + selectedLevel);
     }
 
     public void StartGame()
     {
         Debug.Log("Memulai Game! Pindah ke Scene " + selectedLevel);
         SceneManager.LoadScene(selectedLevel);
+        AudioManager.Instance.Play("Interaction_positive", transform);
     }
 
     public void QuitGame()
     {
         Debug.Log("Keluar dari aplikasi...");
+        AudioManager.Instance.Play("Interaction_negative", transform);
         Application.Quit(); // Catatan: Ini cuma berfungsi saat di-build (.exe / .apk)
     }
 }
