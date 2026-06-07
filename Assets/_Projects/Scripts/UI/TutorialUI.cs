@@ -22,10 +22,12 @@ public class TutorialUI : MonoBehaviour
         if (currentPage < tutorialTexts.Length - 1)
         {
             textLabel.text = tutorialTexts[currentPage + 1];
+            AudioManager.Instance.Play("Interaction_positive");
         }
         else
         {
             gameObject.SetActive(false);
+            AudioManager.Instance.Play("Interaction_negative");
         }
     }
 }

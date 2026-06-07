@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         CurrentState = GameState.Playing;
+        AudioManager.Instance.Play("CityBGM");
     }
 
     private void Win()
@@ -57,19 +58,23 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
+        AudioManager.Instance.Play("Interaction_negative");
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
     }
     public void QuitGame()
     {
+        AudioManager.Instance.Play("Interaction_negative");
         Application.Quit();
     }
     public void ReturnToMainMenu()
     {
+        AudioManager.Instance.Play("Interaction_positive");
         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
     public void LoadNextLevel()
     {
         int nextSceneIndex = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex + 1;
+        AudioManager.Instance.Play("Interaction_positive");
         if (nextSceneIndex < UnityEngine.SceneManagement.SceneManager.sceneCountInBuildSettings)
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene(nextSceneIndex);
