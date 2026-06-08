@@ -114,6 +114,13 @@ public class UIManager : MonoBehaviour
     {
         Debug.Log("Keluar dari aplikasi...");
         AudioManager.Instance.Play("Interaction_negative", transform);
-        Application.Quit(); // Catatan: Ini cuma berfungsi saat di-build (.exe / .apk)
+        if (Application.isEditor)
+        {
+            UnityEditor.EditorApplication.isPlaying = false; // Hanya berfungsi di Editor
+        }
+        else
+        {
+            Application.Quit(); // Berfungsi saat di-build (.exe / .apk)
+        }
     }
 }

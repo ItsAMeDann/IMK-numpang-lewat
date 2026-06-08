@@ -22160,7 +22160,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2370052180396229020, guid: a590ffc6cccf9354c9191c6b56a65adf, type: 3}
       propertyPath: m_MoveSpeed
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2753669711399790113, guid: a590ffc6cccf9354c9191c6b56a65adf, type: 3}
       propertyPath: m_IsTrigger
@@ -22232,6 +22232,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 525080201}
   m_SourcePrefab: {fileID: 100100000, guid: a590ffc6cccf9354c9191c6b56a65adf, type: 3}
+--- !u!1 &910337093 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3329869637955952304, guid: a590ffc6cccf9354c9191c6b56a65adf, type: 3}
+  m_PrefabInstance: {fileID: 910337092}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &913589918
 GameObject:
   m_ObjectHideFlags: 0
@@ -42503,7 +42508,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fa17b713f0e0ea41974b6bf5d4aff5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UISpawner
-  PlayerCamera: {fileID: 2110468306}
+  PlayerOrigin: {fileID: 910337093}
   TutorialUI: {fileID: 1422364712}
   tutorialData: {fileID: 11400000, guid: 32b90c632b3c3c64298896dc14747dcc, type: 2}
 --- !u!1 &1708595623
