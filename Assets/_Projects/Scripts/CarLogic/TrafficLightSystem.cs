@@ -9,6 +9,7 @@ public class TrafficLightSystem : MonoBehaviour
     public GameObject greenLightObjectPedestrian;
     public GameObject redLightObjectPedestrian;
     public TrafficButton trafficButton;
+    public float greenLightDuration = 20f;
 
     private Coroutine trafficLightCoroutine;
 
@@ -18,17 +19,18 @@ public class TrafficLightSystem : MonoBehaviour
     }
     public void activateTrafficLightSystem()
     {
-        activateGreen();
         if (trafficLightCoroutine != null)
         {
-            StopCoroutine(trafficLightCoroutine);
+            return;
+            // StopCoroutine(trafficLightCoroutine);
         }
+        activateGreen();
         trafficLightCoroutine = StartCoroutine(trafficLightTimer());
     }
 
     private IEnumerator trafficLightTimer()
     {
-        yield return new WaitForSeconds(5f); // Wait for 5 seconds
+        yield return new WaitForSeconds(greenLightDuration); // Wait for the specified duration
         deactivateGreen();
         trafficLightCoroutine = null; // Clear the coroutine reference
         Debug.Log("Traffic light turned red for pedestrians.");
@@ -37,19 +39,20 @@ public class TrafficLightSystem : MonoBehaviour
     private void activateGreen()
     {
         isGreenForPedestrian = true;
-        greenLightObjectCar.SetActive(true);
-        redLightObjectCar.SetActive(false);
-        greenLightObjectPedestrian.SetActive(false);
-        redLightObjectPedestrian.SetActive(true);
+        greenLightObjectCar.SetActive(false);
+        redLightObjectCar.SetActive(true);
+        greenLightObjectPedestrian.SetActive(true);
+        redLightObjectPedestrian.SetActive(false);
+        trafficButton.PressButton();
     }
 
     private void deactivateGreen()
     {
         isGreenForPedestrian = false;
-        greenLightObjectCar.SetActive(false);
-        redLightObjectCar.SetActive(true);
-        greenLightObjectPedestrian.SetActive(true);
-        redLightObjectPedestrian.SetActive(false);
+        greenLightObjectCar.SetActive(true);
+        redLightObjectCar.SetActive(false);
+        greenLightObjectPedestrian.SetActive(false);
+        redLightObjectPedestrian.SetActive(true);
         trafficButton.ResetButton();
     }
 

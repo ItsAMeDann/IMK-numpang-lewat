@@ -11249,7 +11249,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2370052180396229020, guid: a590ffc6cccf9354c9191c6b56a65adf, type: 3}
       propertyPath: m_MoveSpeed
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2753669711399790113, guid: a590ffc6cccf9354c9191c6b56a65adf, type: 3}
       propertyPath: m_IsTrigger
@@ -13339,15 +13339,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5495143742541200710, guid: 2a503621ad3b58147a9ba5092b3b61be, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.008
+      value: 0.006
       objectReference: {fileID: 0}
     - target: {fileID: 5495143742541200710, guid: 2a503621ad3b58147a9ba5092b3b61be, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.008
+      value: 0.006
       objectReference: {fileID: 0}
     - target: {fileID: 5495143742541200710, guid: 2a503621ad3b58147a9ba5092b3b61be, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.008
+      value: 0.006
       objectReference: {fileID: 0}
     - target: {fileID: 5495143742541200710, guid: 2a503621ad3b58147a9ba5092b3b61be, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13440,10 +13440,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 287161007387240122, guid: 2a503621ad3b58147a9ba5092b3b61be, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1042590257}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a503621ad3b58147a9ba5092b3b61be, type: 3}
 --- !u!224 &1042590255 stripped
 RectTransform:
@@ -13455,25 +13452,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 287161007387240122, guid: 2a503621ad3b58147a9ba5092b3b61be, type: 3}
   m_PrefabInstance: {fileID: 1042590254}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1042590257
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1042590256}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7951c64acb0fa62458bf30a60089fe2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.UI.TrackedDeviceGraphicRaycaster
-  m_IgnoreReversedGraphics: 0
-  m_CheckFor2DOcclusion: 0
-  m_CheckFor3DOcclusion: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RaycastTriggerInteraction: 1
 --- !u!1 &1043180053
 GameObject:
   m_ObjectHideFlags: 0
@@ -17885,6 +17863,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5307421384572430530, guid: 2991a1e2cd7d20140ad16b0a3b4343c8, type: 3}
   m_PrefabInstance: {fileID: 1418539140}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1423304373 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3329869637955952304, guid: a590ffc6cccf9354c9191c6b56a65adf, type: 3}
+  m_PrefabInstance: {fileID: 910337092}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1423631544
 GameObject:
   m_ObjectHideFlags: 0
@@ -18845,11 +18828,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5495143742541200710, guid: 56f36c3988f2a7f409eeea926f1bfeb3, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -13.78663
+      value: -1.02
       objectReference: {fileID: 0}
     - target: {fileID: 5495143742541200710, guid: 56f36c3988f2a7f409eeea926f1bfeb3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.16
+      value: 1.39
       objectReference: {fileID: 0}
     - target: {fileID: 5495143742541200710, guid: 56f36c3988f2a7f409eeea926f1bfeb3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -26136,7 +26119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fa17b713f0e0ea41974b6bf5d4aff5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UISpawner
-  PlayerCamera: {fileID: 2110468306}
+  PlayerOrigin: {fileID: 1423304373}
   TutorialUI: {fileID: 1491913765}
   tutorialData: {fileID: 11400000, guid: 78b9e87cd065fd545a90b55f57cd1241, type: 2}
 --- !u!1 &1711051225

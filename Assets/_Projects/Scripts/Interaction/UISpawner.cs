@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class UISpawner : MonoBehaviour
 {
-    public Camera PlayerCamera;
+    public GameObject PlayerOrigin;
     public Canvas TutorialUI;
     public TutorialData tutorialData;
 
@@ -28,14 +28,14 @@ public class UISpawner : MonoBehaviour
 
     public void BringUIToCamera(GameObject uiCanvas)
     {
-        if (uiCanvas == null || PlayerCamera == null)
+        if (uiCanvas == null || PlayerOrigin == null)
         {
-            Debug.LogWarning("UI Canvas or Player Camera is missing.");
+            Debug.LogWarning("UI Canvas or Player Origin is missing.");
             return;
         }
         // attach the canvas to camera as camera's child
-        uiCanvas.transform.SetParent(PlayerCamera.transform, false);
-        uiCanvas.transform.localPosition = new Vector3(0f, 0f, 4f);
+        uiCanvas.transform.SetParent(PlayerOrigin.transform, false);
+        uiCanvas.transform.localPosition = new Vector3(0f, 1.3f, 4f);
         uiCanvas.transform.localRotation = Quaternion.identity;
     }
 }

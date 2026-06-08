@@ -34,14 +34,14 @@ public class CarDecision : MonoBehaviour
             currentState = CarState.FullStop;
             target_velocity = 0f;
             HandleKlakson(klaksonCooldown + 5f);
-            AudioManager.Instance.Play("Car_rem", transform);
+            HandleRem(klaksonCooldown + 5f);
         }
         else if (isWalkerLightOn || (playerInRange && playerOnZebraCross) || (playerInRange && playerGiveSignal))
         {
             currentState = CarState.FullStop;
             target_velocity = 0f;
             HandleKlakson(klaksonCooldown);
-            AudioManager.Instance.Play("Car_rem", transform);
+            HandleRem(klaksonCooldown);
         }
         else if (zebraCrossInRange && playerInRange)
         {
@@ -60,6 +60,19 @@ public class CarDecision : MonoBehaviour
         }
         // Debug.Log($"State: {currentState}, Target Velocity: {target_velocity}");
         carMove.SetTargetVelocity(target_velocity);
+    }
+
+    private void HandleRem(float remCooldown)
+    {
+        if (klaksonTimer <= 0f)
+        {
+            AudioManager.Instance.Play("Car_rem", transform);
+            klaksonTimer = remCooldown;
+        }
+        else
+        {
+            klaksonTimer -= Time.deltaTime;
+        }
     }
 
     private void HandleKenceng(float kencengCooldown)
